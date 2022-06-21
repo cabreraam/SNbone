@@ -29,7 +29,7 @@ END DO
 
 200 FORMAT(10I8)
 210 FORMAT(1P,6(E13.6,1X))
-OPEN(UNIT=File_Unit,IOSTAT=IOS,FILE='grid_tet_mesh.ascii')
+OPEN(UNIT=File_Unit,IOSTAT=IOS,FILE='inputmesh.ascii')
 WRITE(File_Unit,'("# Version 1.0 file format for CFE SN miniapp")')        ! Generic junk about the file type
 WRITE(File_Unit,200) NumVertices,NumElements,NumVacuum
 DO Vertex = 1,NumVertices
@@ -44,7 +44,7 @@ END DO
 CLOSE(File_Unit)
 
 
-OPEN(UNIT=File_Unit,IOSTAT=IOS,FILE='grid_tet_mesh.vtk',ACCESS='SEQUENTIAL',FORM='FORMATTED')
+OPEN(UNIT=File_Unit,IOSTAT=IOS,FILE='inputmesh.vtk',ACCESS='SEQUENTIAL',FORM='FORMATTED')
 WRITE(File_Unit,'("# vtk DataFile Version 3.0")')                          ! Generic junk about the file type
 WRITE(File_Unit,'("ANL NE devision neutronics export routine 08-2006")')   ! A title description of the type of output
 WRITE(File_Unit,'("ASCII")')                                               ! This will be an ascii export option

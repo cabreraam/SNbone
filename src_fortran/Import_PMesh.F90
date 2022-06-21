@@ -26,6 +26,7 @@ END IF
 !END IF
 READ(File_Unit,*,IOSTAT=IOS) NumVertices,NumElements,NumVacuum,NumUnitNormals,   &
                   AS_NumThreads,AS_NumColors,FEVertices,FEGaussPoints,FENumDim
+
 IF (IOS .NE. 0) THEN
    WRITE(Output_Unit,*)'Read failure of control data'
    CALL Abort
