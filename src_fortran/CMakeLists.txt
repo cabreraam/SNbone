@@ -65,6 +65,8 @@ set(TARGET_SRC_FILES
 	"List of target source files"
 )
 
+set(PGM_DIR "" CACHE STRING "Location of libpgmath if using LLVM flang")
+
 ################################################################################
 #
 # Setting up build target
@@ -96,6 +98,39 @@ endif()
 # Compile Options for Different Compilers
 #
 ################################################################################
+# ------------------------------
+# LLVMFlang LLVMFlang LLVMFlang 
+# ------------------------------
+# TODO: I'm making some assumptions about necessary flags/options. Are they
+# correct assumptions?
+set(SNACFE_COMPILE_DEFNS_FLANG
+	$<$<BOOL:${THREAD}>:WITHOMP>
+	$<$<BOOL:${USEGREEDY}>:USEGREEDY>
+	$<$<BOOL:${USEMETIS}>:USEMETIS>
+	CACHE
+	STRING
+	"LLVMFlang compiler definitions"
+)
+set(SNACFE_COMPILE_OPTIONS_FLANG
+	-O0
+	CACHE
+	STRING
+	"LLVMFlang compiler options"
+)
+set(SNACFE_LINK_LIBS_FLANG
+	$<$<BOOL:${USEMETIS}>:../metis/libmetis.a>
+	"$<$<Fortran_COMPILER_ID:LLVMFlang>:${PGM_DIR}/libpgmath.so>"
+	CACHE
+	STRING
+	"LLVMFlang libraries to link"
+)
+set(SNACFE_INCLUDE_DIRS_FLANG
+
+	CACHE
+	STRING
+	"LLVMFlang include directories"
+)
+
 # ------------------------------
 # INTEL INTEL INTEL INTEL
 # ------------------------------
