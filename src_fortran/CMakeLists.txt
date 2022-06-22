@@ -29,28 +29,6 @@ set(DEBUG "" CACHE STRING "Don't yet know what they mean by this")
 # They set the linker through a variable LD, but I don't think we need to do 
 # that here.
 
-# TODO:
-# Figure out how to handle PAPI flags
-# There are PAPI inc and lib flags, as well as pound defines
-# Same 
-#set(PAPIFLAGS "" CACHE STRING)
-
-# TODO:
-# IBMFLAGS
-# IBMFLAGS gets set if they are using an IBM compiler. In this case, it's bgq,
-# or mpixlf90_r.
-# The only thing that IBMFLAGS gets set to is -WF,-DWITHBGQHPM
-# The -WF flag is a way to pass things to the IBM preprocessor
-
-# TODO:
-# IBMLIB
-# IBMLIB also only gets set if they are using an IBM compiler. The directories
-# for the location of libmpihpm and libbgpm are hard-coded, so I'm assuming the
-# user would need to specify those if they wanted to use them
-
-# TODO:
-# EXTFLAGS is for extra values to be pound defined.
-
 set(TARGET_NAME
 	SNaCFE.x
 	CACHE
